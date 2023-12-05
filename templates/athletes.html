@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Наши спортсмены</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <a href="{{url_for('welcome')}}">Главная страница</a>
+        <h1 class="title">Наши действующие спортсмены</h1>
+        <h3 class="contact">Хотите вступить в их ряды?</h3>
+        <div class="d1">
+        <table class="t" cellpadding="15">
+            <tr class="up"><th>Id</th><th>Имя</th><th>Пол</th><th>Возраст</th>
+                <th>Место</th><th>Вид спорта</th><th>Активность</th>
+            </tr>
+            {% for one in users if one.use %}
+                <tr class="in">
+                <th>{{one.id}}</th><th align="left">{{one.name}}</th><th>{{one.gender}}</th>
+                <th>{{one.age}}</th><th align="left">{{one.place}}</th>
+                <th align="left">{{one.sport}}</th><th>{{one.use}}</th>
+                </tr>
+            {% endfor %}
+        </table>
+        </div>
+        <h1 class="subtitle">Тренерский штаб</h1>
+        <div class="d2">
+        <table class="t" cellpadding="15">
+            <tr class="up"><th>Id</th><th>Имя</th><th>Возраст</th>
+                <th>Стаж</th><th>Вид спорта</th>
+            </tr>
+            {% for one in teachers %}
+                <tr class="in">
+                <th>{{one.id}}</th><th align="left">{{one.name}}</th>
+                <th>{{one.age}}</th><th align="left">{{one.stage}}</th>
+                <th align="left">{{one.sport}}</th>
+                </tr>
+            {% endfor %}
+        </table>
+        </div>
+    </body>
+</html>
